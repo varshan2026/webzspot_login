@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:root  {
+    --color-primary: #1E3A8A;   
+    --color-secondary: #F59E0B; 
+    --color-accent: #10B981;    
+}
+
+body{
+    font-family: "Poppins", sans-serif;
+}
+
+p{
+    font-size: 16px;
+    font-weight: 400;
+}
