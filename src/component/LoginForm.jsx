@@ -32,7 +32,7 @@ function LoginForm() {
 
       <div className="flex justify-between">
         <button 
-        className={`accessButton ${active === "admin"?"active":"inactive"}`}
+        className={`accessButton ${active === "admin"?"active":"inactive"} p-3 md:p-4 lg:p-5 `}
         onClick={userAdmin}
         >
           Admin
@@ -55,7 +55,7 @@ function LoginForm() {
               value={Email}
               onChange={(e) => setEmail(e.target.value)}
               className="focus:outline-none"
-              placeholder={active === "admin"?"admin@webzspot.com":"staff@webzspot.com"}
+              placeholder={active === "admin"?"admin@example.com":"staff@example.com"}
             />
           </div>
 
