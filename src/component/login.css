@@ -125,9 +125,8 @@ label{
 		height: 63vh;
 	}
 
-	/* .loginform-container{
-		justify-content: flex-start;
-		margin-top: 25px;
-	} */
+	.loginform-container{
+		margin: 25px 0;
+	}
 
 }
