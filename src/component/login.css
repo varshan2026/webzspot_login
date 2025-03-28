@@ -1,5 +1,4 @@
 .loginform-container{
-	/* height: 100vh; */
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -93,15 +92,6 @@ label{
 	bottom: 0;
 	right: 0;
 }
-
-/* @media screen and (max-width:580px) {
-
-	.loginbanner-container{
-		height: 80vh;
-	}
-	
-} */
-
 
 /* ---------------- Login Page --------------- */
 

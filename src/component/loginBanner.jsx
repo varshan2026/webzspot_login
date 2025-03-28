@@ -74,13 +74,13 @@ function LoginBanner(){
                 </motion.div>
 
                 <div className="flex mt-4 space-x-1 z-9">
-                    {slideDetail.map((_, index) => (
+                    {slideDetail.map((dot, index) => (
                         <div
                             key={index}
                             className={`transition-all duration-600 ${
                                 currentIndex === index
-                                    ? "w-8 h-3 bg-white rounded-full" 
-                                    : "w-3 h-3 bg-gray-400 rounded-full" 
+                                ? "w-8 h-3 bg-white rounded-full" 
+                                : "w-3 h-3 bg-gray-400 rounded-full" 
                             }`}
                         />
                     ))}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaEye, FaEyeSlash  } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 import "./login.css";
 
 function LoginForm() {
@@ -19,6 +20,32 @@ function LoginForm() {
 
   const userStaff = () => {
     setactive("staff")
+  }
+
+  const userLogin = (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^.{8,}$/; 
+
+    if (!Email && !Password) {
+      toast.error("Please enter valid email and password!", { autoClose: 1000 });
+    } else if (!Email) {
+      toast.error("Email is required!", { autoClose: 1000 });
+    } else if (!emailRegex.test(Email)) {
+      toast.error("Invalid email format!", { autoClose: 1000 });
+    } else if (!Password) {
+      toast.error("Password is required!", { autoClose: 1000 });
+    } else if (!passwordRegex.test(Password)) {
+      toast.error("Password must be at least 8 characters & combination of (e.g.,Aa, 123 !, @, #, $, %, &)", { autoClose: 1000 });
+    } else {
+      toast.success("Login Successful!", { autoClose: 1000 });
+    }
+
+    setEmail("");
+    setPassword("");
+
+    console.log([`Email: ${Email} password: ${Password}`])
   }
 
   return (
@@ -87,9 +114,11 @@ function LoginForm() {
           <div>
             <button 
             className="px-4 py-3 text-white border rounded-md bg-black w-full cursor-pointer"
+            onClick={userLogin}
             >
               Login
             </button>
+            <ToastContainer/>
             <p className="new-user">
               New User ? <span>Sign Up Now &#8594;</span>
             </p>
