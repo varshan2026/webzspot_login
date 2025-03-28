@@ -1,5 +1,5 @@
 .loginform-container{
-	height: 100vh;
+	/* height: 100vh; */
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -66,6 +66,7 @@ label{
 .loginbanner-container{
 	background: #3c6e71 url("../assets/round.png") no-repeat;
 	background-position: -320px 255px;
+	height: 100vh;
 	width: 50%;
 	display: flex;
 	align-items: center;
@@ -73,7 +74,7 @@ label{
 }
 
 .login-banner-content{
-	height: 90%;
+	height: 90vh;
 	width: 90%;
 	display: flex;
 	flex-direction: column;
@@ -93,13 +94,13 @@ label{
 	right: 0;
 }
 
-@media screen and (max-width:580px) {
+/* @media screen and (max-width:580px) {
 
 	.loginbanner-container{
 		height: 80vh;
 	}
 	
-}
+} */
 
 
 /* ---------------- Login Page --------------- */
@@ -117,12 +118,16 @@ label{
 
 	.loginbanner-container{
 		width: 100%;
-		height: 65vh;
+		height: 75vh;
 	}
 
-	.loginform-container{
+	.login-banner-content {
+		height: 63vh;
+	}
+
+	/* .loginform-container{
 		justify-content: flex-start;
 		margin-top: 25px;
-	}
+	} */
 
 }
