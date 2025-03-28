@@ -73,7 +73,7 @@ function LoginBanner(){
                     </motion.img>
                 </motion.div>
 
-                <div className="flex mt-4 space-x-2 z-9">
+                <div className="flex mt-4 space-x-1 z-9">
                     {slideDetail.map((_, index) => (
                         <div
                             key={index}
