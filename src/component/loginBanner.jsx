@@ -42,7 +42,7 @@ function LoginBanner(){
                     key={currentIndex}
                 >
                     <motion.h1
-                        className="lg:text-3xl font-semibold text-white mt-4"
+                        className="text-xl lg:text-3xl font-semibold text-white lg:mt-4"
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 50 }}
@@ -52,7 +52,7 @@ function LoginBanner(){
                     </motion.h1>
 
                     <motion.p
-                        className="text-3xl text-white mt-5"
+                        className="text-3xl text-white mt-4 lg:mt-5"
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -50 }}
@@ -64,7 +64,7 @@ function LoginBanner(){
                     <motion.img
                         src={slideDetail[currentIndex].img}
                         alt="image"
-                        className="w-lg sm:w-lg md:w-xl lg:w-xl absolute bottom-0 right-0"
+                        className="slideImage"
                         initial={{ opacity: 0, scale: 1, x:-40 }}
                         animate={{ opacity: 1, scale: 1, x:0 }}
                         exit={{ opacity: 0, scale: 0.8 }}
@@ -73,7 +73,7 @@ function LoginBanner(){
                     </motion.img>
                 </motion.div>
 
-                <div className="flex mt-4 space-x-2">
+                <div className="flex mt-4 space-x-2 z-9">
                     {slideDetail.map((_, index) => (
                         <div
                             key={index}
@@ -85,7 +85,6 @@ function LoginBanner(){
                         />
                     ))}
                 </div>
-              
             </div>
         </div>
     )
