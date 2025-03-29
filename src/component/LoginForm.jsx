@@ -54,7 +54,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="px-8 my-12 flex justify-center items-center w-[100vw] xl:w-[50vw]">
+    <div className="px-8 my-10 flex justify-center items-center w-[100vw] xl:w-[50vw]">
       <div className="flex flex-col gap-y-10">
         <div>
           <h1 className="text-4xl text-gray-800 font-semibold">
