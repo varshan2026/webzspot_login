@@ -36,7 +36,7 @@ function LoginBanner() {
 
   return (
     <div
-      className="loginbanner-container w-[100vw] xl:w-[50vw] h-[70vh] md:h-[90vh] xl:h-[100vh] flex justify-center items-center bg-[#3c6e71] bg-no-repeat bg-[length:auto] bg-[-320px_255px]"
+      className="loginbanner-container w-[100vw] xl:w-[50vw] h-[68vh] md:h-[90vh] xl:h-[100vh] flex justify-center items-center bg-[#3c6e71] bg-no-repeat bg-[length:auto] bg-[-320px_255px]"
       style={{ backgroundImage: `url(${round})` }}
     >
       <div className="flex justify-center items-center">

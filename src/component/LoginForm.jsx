@@ -54,7 +54,7 @@ function LoginForm() {
   };
 
   return (
-    <div className="px-8 my-10 flex justify-center items-center w-[100vw] xl:w-[50vw]">
+    <div className="!px-6 my-10 flex justify-center items-center w-[100vw] xl:w-[50vw]">
       <div className="flex flex-col gap-y-10">
         <div>
           <h1 className="text-4xl text-gray-800 font-semibold">
@@ -86,7 +86,7 @@ function LoginForm() {
         </div>
 
         <form>
-          <div className="flex flex-col gap-y-5">
+          <div className="flex flex-col gap-y-4">
             <div className="form-group flex flex-col px-5 py-3">
               <label>Email</label>
               <input
