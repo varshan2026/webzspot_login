@@ -15,29 +15,3 @@
 	border-radius: 10px 10px 0 0;
 }
 
-.form-group{
-	border: 1px solid #e9e9e9;
-	border-radius: 6px;
-}
-
-label{
-	color: #666666;
-}
-
-.forgot-password{
-	color: #4c4c4c;
-	text-align: end;
-	margin-top: 6px;
-	cursor: pointer;
-}
-
-.new-user{
-	color: #666666;
-	margin-top: 20px;
-}
-
-.new-user span{
-	color: #3C6E71;
-	font-weight: 500;
-	cursor: pointer;
-}

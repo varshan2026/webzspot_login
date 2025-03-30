@@ -9,8 +9,7 @@ function LoginForm() {
   const [showPassword, setshowPassword] = useState(false);
   const [active, setactive] = useState("admin");
 
-  const passwordState = (e) => {
-    e.preventDefault();
+  const passwordState = () => {
     setshowPassword(!showPassword);
   };
 
@@ -22,8 +21,7 @@ function LoginForm() {
     setactive("staff");
   };
 
-  const userLogin = (e) => {
-    e.preventDefault();
+  const userLogin = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^.{8,}$/;
@@ -85,58 +83,60 @@ function LoginForm() {
           </button>
         </div>
 
-        <form>
-          <div className="flex flex-col gap-y-4">
-            <div className="form-group flex flex-col px-5 py-3">
-              <label>Email</label>
+        <div className="flex flex-col gap-y-4">
+          <div className="border border-[#e9e9e9] rounded-md flex flex-col px-5 py-3">
+            <label className="text-[#666666]">Email</label>
+            <input
+              type="email"
+              value={Email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="focus:outline-none mt-1"
+              placeholder={
+                active === "admin" ? "admin@example.com" : "staff@example.com"
+              }
+            />
+          </div>
+
+          <div>
+            <div className="border border-[#e9e9e9] rounded-md relative flex flex-col justify-center px-5 py-3">
+              <label className="text-[#666666]">Password</label>
               <input
-                type="email"
-                value={Email}
-                onChange={(e) => setEmail(e.target.value)}
+                type={showPassword ? "text" : "password"}
+                value={Password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="focus:outline-none mt-1"
                 placeholder={
-                  active === "admin" ? "admin@example.com" : "staff@example.com"
+                  showPassword === true ? "Login@123" : "*********"
                 }
               />
-            </div>
 
-            <div>
-              <div className="form-group relative flex flex-col px-5 py-3">
-                <label>Password</label>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  value={Password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="focus:outline-none mt-1"
-                  placeholder={
-                    showPassword === true ? "Login@123" : "*********"
-                  }
-                />
-
-                <button
-                  className="absolute right-5 top-6 text-2xl cursor-pointer text-gray-500"
-                  onClick={passwordState}
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
-              </div>
-              <p className="forgot-password">Forgot Password ?</p>
-            </div>
-
-            <div>
               <button
-                className="px-4 py-3 text-white border rounded-md bg-black w-full cursor-pointer"
-                onClick={userLogin}
+                className="absolute right-5 top-6 text-2xl cursor-pointer text-gray-500"
+                onClick={passwordState}
               >
-                Login
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
-              <ToastContainer />
-              <p className="new-user">
-                New User ? <span>Sign Up Now &#8594;</span>
-              </p>
             </div>
+            <p 
+              className="text-end text-[#4c4c4c] cursor-pointer mt-2"
+            >
+              Forgot Password ?
+            </p>
           </div>
-        </form>
+
+          <div>
+            <button
+              className="px-4 py-3 text-white border rounded-md bg-black w-full cursor-pointer"
+              onClick={userLogin}
+            >
+              Login
+            </button>
+            <ToastContainer />
+            <p className="text-[#666666] mt-5">
+              New User ? <span className="cursor-pointer text-[#3c6e71] font-medium">Sign Up Now &#8594;</span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
