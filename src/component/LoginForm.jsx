@@ -140,21 +140,21 @@ function LoginForm() {
 
       <section className="px-8 my-12 flex justify-center items-center w-[100vw] lg:w-[50vw]">
         <div className="flex flex-col gap-y-10">
-          <div>
-            <h1 className="text-4lg text-gray-800 font-semibold">
+          <header>
+            <h1 className="text-4xl text-gray-800 font-semibold">
               Welcome Back!
             </h1>
             <p className="text-base text-gray-500 mt-3">
               Log in to streamline your sales process and close deals faster
             </p>
-          </div>
+          </header>
 
           <div className="flex justify-between">
             <button
-              className={`max-w-[220px] w-full border-b-1 border-gray-300 transition duration-400 ${
+              className={`max-w-[220px] w-full font-medium border-b-1 border-gray-300 transition duration-400 ${
                 active === "admin"
                   ? "text-white bg-[#3C6E71] rounded-t-lg"
-                  : "text-gray-500"
+                  : "text-[#666666]"
               } p-3 md:p-4 lg:p-5`}
               onClick={userAdmin}
             >
@@ -162,10 +162,10 @@ function LoginForm() {
             </button>
 
             <button
-              className={`max-w-[220px] w-full border-b-1 rounded-t-lg border-gray-300 transition duration-400 ${
+              className={`max-w-[220px] w-full font-medium border-b-1 rounded-t-lg border-gray-300 transition duration-400 ${
                 active === "staff"
-                  ? "text-white bg-[#3C6E71] "
-                  : "text-gray-500"
+                  ? "text-white bg-[#3C6E71] rounded-t-lg"
+                  : "text-[#666666]"
               } p-3 md:p-4 lg:p-5`}
               onClick={userStaff}
             >
