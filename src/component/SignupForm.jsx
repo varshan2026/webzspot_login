@@ -53,21 +53,34 @@ function SignUpForm(){
   }
 
   const otpChange = (e, index) => {
-    const value = e.target.value;
+    let value = e.target.value;
 
     if (!/^\d*$/.test(value)) return;
 
-    // eslint-disable-next-line no-const-assign
     if (value.length > 1) value = value.slice(-1);
 
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
 
-    if (value && index < otp.length - 1) {
+    if (value && index < otp.length + 1) {
       const nextInput = e.target.parentNode.children[index + 1];
       if (nextInput) nextInput.focus();
     }
+  }
+
+  const showData = () => {
+    console.log(`
+      Name: ${Name}, 
+      Email: ${Email}, 
+      Phone: ${Phone}, 
+      Password: ${Password}, 
+      RePassword: ${rePassword}, 
+      Business Name: ${businessName}, 
+      Business Type: ${businessType}, 
+      OTP: ${otp}, 
+      URL: ${url}`
+    )
   }
 
   return (
@@ -127,7 +140,7 @@ function SignUpForm(){
         </div>
       </section>
 
-      <section className="w-[100vw] lg:w-[50vw] h-[auto] lg:h-[100vh] my-10 lg:my-0 px-6 flex justify-center items-center">
+      <section className="w-[100vw] lg:w-[50vw] h-[auto] lg:h-[100vh] my-10 lg:my-0 px-7 flex justify-center items-center">
         <div className="flex flex-col gap-y-4">
           <header>
             <h1 className="text-[#3c6e71] font-[600] text-lg lg:text-[28px]">
@@ -139,7 +152,6 @@ function SignUpForm(){
           </header>
 
           <form
-            className="w-[320px] md:w-[500px] lg:w-[600px]"
             onSubmit={(e) => e.preventDefault()}
           >
             {Step === 1 && (
@@ -214,11 +226,11 @@ function SignUpForm(){
                     />
                   </div>
 
-                  <div className="col-span-1 lg:col-span-2 bg-[#f5f7fe] py-2.5 px-4 w-[100%] lg:w-xl rounded-md">
+                  <div className="col-span-1 lg:col-span-2 bg-[#f5f7fe] py-2.5 px-4 max-w-[500px] rounded-md">
                     <p className="text-black text-[12px] font-medium">Note:</p>
 
                     <p className="text-[12px] text-[#6f6c90]">
-                      Your password should be at least 8 characters long and
+                      Your password should be at least 8 characters long and 
                       include uppercase and lowercase letters, a number, and a
                       special character
                       <span className="text-black font-medium">
@@ -356,26 +368,39 @@ function SignUpForm(){
                   </div>
 
                   <div>
-                    <ul className="text-[#4c4c4c] border border-[#E5EFFF] rounded-xl px-6 py-4 flex flex-col justify-center">
-                      <li className="border-b-2 border-[#E5EFFF] py-4">
+                    <ul className="text-[#4c4c4c] border border-[#E5EFFF] rounded-xl px-6 flex flex-col justify-center">
+                      <li className="border-b-2 border-[#E5EFFF] py-5">
+                        <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
                         2 Factor Authentication
                       </li>
-                      <li className="border-b-2 border-[#E5EFFF] py-4">
+                      <li className="border-b-2 border-[#E5EFFF] py-5">
+                        <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
                         SMS Reminder
                       </li>
-                      <li className="py-4">Team Members - 50</li>
+                      <li className="py-5">
+                        <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
+                        Team Members - 50
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
             )}
+
             <div
               className="text-white font-medium bg-black text-center py-2.5 mt-6 border rounded-md cursor-pointer"
               onClick={nextStep}
             >
-              <button className="cursor-pointer">
-                {Step === 4 ? "Buy Now" : "Continue"}
+              {Step === 4 ? (
+                <button className="cursor-pointer"
+                  onClick={showData}
+                >Buy Now
               </button>
+              ) : (
+                <button className="cursor-pointer">
+                  Continue
+                </button>
+              )}
             </div>
           </form>
         </div>
