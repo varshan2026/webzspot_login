@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -13,6 +14,7 @@ function LoginForm() {
   const [showPassword, setshowPassword] = useState(false);
   const [active, setactive] = useState("admin");
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const slideDetail = [
     {
@@ -81,8 +83,12 @@ function LoginForm() {
     console.log([`Email: ${Email} password: ${Password}`]);
   };
 
+  const navSign = () => {
+    navigate("/signup")
+  }
+
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap lg:flex-nowrap">
       <section
         className="w-[100vw] lg:w-[50vw] h-[68vh] lg:h-[100vh] flex justify-center items-center bg-[#3c6e71] bg-no-repeat bg-[length:auto] bg-[-320px_255px]"
         style={{ backgroundImage: `url(${round})` }}
@@ -224,8 +230,11 @@ function LoginForm() {
               </button>
               <ToastContainer />
               <p className="text-[#666666] mt-5">
-                New User ?{" "}
-                <span className="cursor-pointer text-[#3c6e71] font-medium">
+                New User ?
+                <span 
+                  className="cursor-pointer text-[#3c6e71] font-medium"
+                  onClick={navSign}
+                >
                   Sign Up Now &#8594;
                 </span>
               </p>
