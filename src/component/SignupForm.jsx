@@ -18,6 +18,7 @@ function SignUpForm(){
   const[businessType, setbusinessType] = useState("");
   const[url, setUrl] = useState("");
   const[otp, setOtp] = useState(new Array(6).fill(""));
+  const progress = [1,2,3,4];
   
   const slideDetail = [
     {
@@ -140,249 +141,270 @@ function SignUpForm(){
         </div>
       </section>
 
-      <section className="w-[100vw] lg:w-[50vw] h-[auto] lg:h-[100vh] my-10 lg:my-0 px-7 flex justify-center items-center">
-        <div className="flex flex-col gap-y-4">
+      <section className="w-[100vw] lg:w-[50vw] h-[auto] lg:h-[100vh] my-10 lg:my-0 px-7 flex justify-center">
+        <div className="flex flex-col gap-y-6 my-auto w-[520px]">
           <header>
-            <h1 className="text-[#3c6e71] font-[600] text-lg lg:text-[28px]">
+            <h1 className="text-[#3c6e71] font-[600] text-[18px] lg:text-[26px]">
               Simplify Your Lead Management
             </h1>
-            <p className="text-sm lg:text-md text-[#6f6c90] mt-1">
+            <p className="text-sm lg:text-md text-[#6f6c90]">
               Register now to streamline your sales pipeline.
             </p>
           </header>
+
+          <div>
+            <section>
+              {Step === 1 && (
+                <header>
+                  <h1 className="text-[#333333] text-lg lg:text-[22px] font-[600]">
+                    Tell Us About Yourself
+                  </h1>
+                  <p className="text-[#6f6c90] font-[400] text-sm lg:text-md">
+                    Enter your basic details to get started with our CRM
+                    experience.
+                  </p>
+                </header>
+              )}
+              {Step === 2 && (
+                <header>
+                  <h1 className="text-[#333333] text-lg lg:text-[22px] font-[600]">
+                    Set Up Your Business Profile
+                  </h1>
+                  <p className="text-[#6f6c90] font-[400] text-sm lg:text-md">
+                    Provide business details for better lead management.
+                  </p>
+                </header>
+              )}
+              {Step === 3 && (
+                <header>
+                  <h1 className="text-[#333333] text-lg lg:text-[22px] font-[600]">
+                    Verify Your Identity
+                  </h1>
+                  <p className="text-[#6f6c90] font-[400] text-sm lg:text-md">
+                    Enter the OTP sent to your phone/email to secure your
+                    account.
+                  </p>
+                </header>
+              )}
+              {Step === 4 && (
+                  <header>
+                    <h1 className="text-[#333333] text-lg lg:text-[22px] font-[600]">
+                      Subscription & Payment
+                    </h1>
+                    <p className="text-[#6f6c90] font-[400] text-sm lg:text-md">
+                      Complete payment to unlock full access and manage leads
+                      efficiently
+                    </p>
+                  </header>
+              )}
+
+              <div className="flex justify-between items-center mt-5">
+                {progress.map((item, index) => {
+                  const isComplete = index <= Step-1;
+
+                  return (
+                    <div key={index} className="relative flex items-center">
+                      <div className={`w-10 h-10 rounded-full flex justify-center items-center  text-[16px] z-10
+                        ${isComplete?" bg-[#3C6E71] text-white":"bg-[#EFF0F6] text-[#6F6C90]"} `}>
+                        {item}
+                      </div>
+  
+                      {index !== progress.length - 1 && (
+                        <div className={`absolute left-12.5 top-4.5 w-24 h-1.5 rounded-2xl
+                          ${isComplete?"bg-[#3C6E71]":"bg-[#EFF0F6]"} `}></div>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            </section>
+          </div>
 
           <form
             onSubmit={(e) => e.preventDefault()}
           >
             {Step === 1 && (
-              <div>
-                <header>
-                  <h1 className="text-[#333333] text-lg lg:text-[25px] font-[600]">
-                    Tell Us About Yourself
-                  </h1>
-                  <p className="text-[#6f6c90] font-[400] mt-1 text-sm lg:text-md">
-                    Enter your basic details to get started with our CRM
-                    experience.
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4.5">
+                <div className="col-span-1 lg:col-span-2 border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">Full Name</label>
+                  <input
+                    type="text"
+                    value={Name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div className="border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">Email</label>
+                  <input
+                    type="email"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="enter valid Email"
+                  />
+                </div>
+
+                <div className="border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">Phone Number</label>
+                  <input
+                    type="text"
+                    value={Phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="Enter valid number"
+                  />
+                </div>
+
+                <div className="border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">
+                    Enter New Password
+                  </label>
+                  <input
+                    type="password"
+                    value={Password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="Enter new password"
+                  />
+                </div>
+
+                <div className="border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">
+                    Re Enter Password
+                  </label>
+                  <input
+                    type="password"
+                    value={rePassword}
+                    onChange={(e) => setRepassword(e.target.value)}
+                    className="focus:outline-0 mt-1 w-full"
+                    placeholder="re-enter password"
+                  />
+                </div>
+
+                <div className="col-span-1 lg:col-span-2 bg-[#f5f7fe] py-2 px-4 rounded-md">
+                  <p className="text-black text-[12px] font-medium">Note:</p>
+
+                  <p className="text-[12px] text-[#6f6c90]">
+                    Your password should be at least 8 characters long and 
+                    include uppercase and lowercase letters, a number, and a
+                    special character
+                    <span className="text-black font-medium">
+                      (e.g., !, @, #, $, %, &)
+                    </span>
                   </p>
-                </header>
-
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4.5 mt-10">
-                  <div className="col-span-1 lg:col-span-2 border border-[#e9e9e9] rounded-md px-5 py-3">
-                    <label className="text-[#666666] block">Full Name</label>
-                    <input
-                      type="text"
-                      value={Name}
-                      onChange={(e) => setName(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="Enter your full name"
-                    />
-                  </div>
-
-                  <div className="border border-[#e9e9e9] rounded-md px-5 py-2.5">
-                    <label className="text-[#666666] block">Email</label>
-                    <input
-                      type="email"
-                      value={Email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="enter valid Email"
-                    />
-                  </div>
-
-                  <div className="border border-[#e9e9e9] rounded-md px-5 py-2.5">
-                    <label className="text-[#666666] block">Phone Number</label>
-                    <input
-                      type="text"
-                      value={Phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="Enter valid number"
-                    />
-                  </div>
-
-                  <div className="border border-[#e9e9e9] rounded-md px-5 py-2.5">
-                    <label className="text-[#666666] block">
-                      Enter New Password
-                    </label>
-                    <input
-                      type="password"
-                      value={Password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="Enter new password"
-                    />
-                  </div>
-
-                  <div className="border border-[#e9e9e9] rounded-md px-5 py-2.5">
-                    <label className="text-[#666666] block">
-                      Re Enter Password
-                    </label>
-                    <input
-                      type="password"
-                      value={rePassword}
-                      onChange={(e) => setRepassword(e.target.value)}
-                      className="focus:outline-0 mt-1 w-full"
-                      placeholder="re-enter password"
-                    />
-                  </div>
-
-                  <div className="col-span-1 lg:col-span-2 bg-[#f5f7fe] py-2.5 px-4 max-w-[500px] rounded-md">
-                    <p className="text-black text-[12px] font-medium">Note:</p>
-
-                    <p className="text-[12px] text-[#6f6c90]">
-                      Your password should be at least 8 characters long and 
-                      include uppercase and lowercase letters, a number, and a
-                      special character
-                      <span className="text-black font-medium">
-                        (e.g., !, @, #, $, %, &)
-                      </span>
-                    </p>
-                  </div>
                 </div>
               </div>
             )}
 
             {Step === 2 && (
-              <div>
-                <header>
-                  <h1 className="text-[#333333] text-lg lg:text-[25px] font-[600]">
-                    Set Up Your Business Profile
-                  </h1>
-                  <p className="text-[#6f6c90] font-[400] mt-1 text-sm lg:text-md">
-                    Provide business details for better lead management.
-                  </p>
-                </header>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="col-span-1 lg:col-span-2 border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">
+                    Business Name
+                  </label>
+                  <input
+                    type="text"
+                    value={businessName}
+                    onChange={(e) => setbusinessName(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="Your business name"
+                  />
+                </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
-                  <div className="col-span-1 lg:col-span-2 border border-[#e9e9e9] rounded-md px-5 py-3">
-                    <label className="text-[#666666] block">
-                      Business Name
-                    </label>
-                    <input
-                      type="text"
-                      value={businessName}
-                      onChange={(e) => setbusinessName(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="Your business name"
-                    />
-                  </div>
+                <div className="border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">
+                    Type of Business
+                  </label>
+                  <select
+                    type="text"
+                    value={businessType}
+                    onChange={(e) => setbusinessType(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="select business type"
+                  >
+                    <option>IT Service</option>
+                    <option>Business Consulting</option>
+                    <option>Digital Marketing</option>
+                    <option>Data Analyst</option>
+                  </select>
+                </div>
 
-                  <div className="border border-[#e9e9e9] rounded-md px-5 py-3">
-                    <label className="text-[#666666] block">
-                      Type of Business
-                    </label>
-                    <select
-                      type="text"
-                      value={businessType}
-                      onChange={(e) => setbusinessType(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="select business type"
-                    >
-                      <option>IT Service</option>
-                      <option>Business Consulting</option>
-                      <option>Digital Marketing</option>
-                      <option>Data Analyst</option>
-                    </select>
-                  </div>
-
-                  <div className="border border-[#e9e9e9] rounded-md px-5 py-3">
-                    <label className="text-[#666666] block">
-                      URL(Optional)
-                    </label>
-                    <input
-                      type="text"
-                      value={url}
-                      onChange={(e) => setUrl(e.target.value)}
-                      className="focus:outline-none mt-1 w-full"
-                      placeholder="Enter URL"
-                    />
-                  </div>
+                <div className="border border-[#e9e9e9] rounded-md px-5 py-2 text-base">
+                  <label className="text-[#666666] block">
+                    URL(Optional)
+                  </label>
+                  <input
+                    type="text"
+                    value={url}
+                    onChange={(e) => setUrl(e.target.value)}
+                    className="focus:outline-none mt-1 w-full"
+                    placeholder="Enter URL"
+                  />
                 </div>
               </div>
             )}
 
             {Step === 3 && (
-              <div>
-                <header>
-                  <h1 className="text-[#333333] text-lg lg:text-[25px] font-[600]">
-                    Verify Your Identity
-                  </h1>
-                  <p className="text-[#6f6c90] font-[400] mt-1 text-sm lg:text-md">
-                    Enter the OTP sent to your phone/email to secure your
-                    account.
+              <div className="flex flex-col gap-3.5">
+                <div className="flex gap-x-2 lg:gap-x-6">
+                  {otp.map((data, index) => (
+                    <input
+                      key={index}
+                      type="text"
+                      value={data}
+                      onChange={(e) => otpChange(e, index)}
+                      className="w-12 lg:w-14 h-12 lg:h-14 border border-[#e9e9e9] text-center focus:outline-0"
+                    />
+                  ))}
+                </div>
+
+                <div className="flex justify-between">
+                  <p className="text-[#999999] text-sm">
+                    Time Remaining 01.25s
                   </p>
-                </header>
-
-                <div className="flex flex-col gap-3.5">
-                  <div className="flex gap-x-2 lg:gap-x-6 mt-5 lg:MT-10">
-                    {otp.map((data, index) => (
-                      <input
-                        key={index}
-                        type="text"
-                        value={data}
-                        onChange={(e) => otpChange(e, index)}
-                        className="w-12 lg:w-14 h-12 lg:h-14 border border-[#e9e9e9] text-center focus:outline-0"
-                      />
-                    ))}
-                  </div>
-
-                  <div className="flex justify-between">
-                    <p className="text-[#999999] text-sm">
-                      Time Remaining 01.25s
-                    </p>
-                    <p className="text-[#4c4c4c] text-base">Resend OTP</p>
-                  </div>
+                  <p className="text-[#4c4c4c] text-base">Resend OTP</p>
                 </div>
               </div>
             )}
 
             {Step === 4 && (
-              <div>
-                <header>
-                  <h1 className="text-[#333333] text-lg lg:text-[25px] font-[600]">
-                    Subscription & Payment
+              <div className="flex flex-col gap-5 p-4.5 border rounded-md border-[#e9e9e9]">
+                <header className="text-center">
+                  <h1 className="text-[#3c6e71] text-xl font-[600]">
+                    Standard Plan
                   </h1>
-                  <p className="text-[#6f6c90] font-[400] mt-1 text-sm lg:text-md">
-                    Complete payment to unlock full access and manage leads
-                    efficiently
+                  <p className="text-[15px] text-[#4c4c4c] mt-1.5">
+                    Get Started with Essential Features
                   </p>
                 </header>
 
-                <div className="flex flex-col gap-5 mt-5 lg:mt-10 p-6 border rounded-md border-[#e9e9e9]">
-                  <header className="text-center">
-                    <h1 className="text-[#3c6e71] text-xl font-[600]">
-                      Standard Plan
-                    </h1>
-                    <p className="text-base text-[#4c4c4c] mt-2.5">
-                      Get Started with Essential Features
-                    </p>
-                  </header>
+                <div className="bg-[#E2F2F3] px-4 py-2.5 border rounded-lg border-[#3C6E71] text-center">
+                  <h1 className="text-2xl font-medium">
+                    ₹499
+                    <span className="text-[#666666] text-base ml-1.5">
+                      | 3 months
+                    </span>
+                  </h1>
+                </div>
 
-                  <div className="bg-[#E2F2F3] px-4 py-4 border rounded-lg border-[#3C6E71] text-center">
-                    <h1 className="text-3xl font-medium">
-                      ₹499
-                      <span className="text-[#666666] text-base">
-                        | 3 months
-                      </span>
-                    </h1>
-                  </div>
-
-                  <div>
-                    <ul className="text-[#4c4c4c] border border-[#E5EFFF] rounded-xl px-6 flex flex-col justify-center">
-                      <li className="border-b-2 border-[#E5EFFF] py-5">
-                        <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
-                        2 Factor Authentication
-                      </li>
-                      <li className="border-b-2 border-[#E5EFFF] py-5">
-                        <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
-                        SMS Reminder
-                      </li>
-                      <li className="py-5">
-                        <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
-                        Team Members - 50
-                      </li>
-                    </ul>
-                  </div>
+                <div>
+                  <ul className="text-[#4c4c4c] text-[15px] border border-[#E5EFFF] rounded-xl px-6 flex flex-col justify-center">
+                    <li className="border-b-2 border-[#E5EFFF] py-4">
+                      <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
+                      2 Factor Authentication
+                    </li>
+                    <li className="border-b-2 border-[#E5EFFF] py-4">
+                      <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
+                      SMS Reminder
+                    </li>
+                    <li className="py-4">
+                      <span className="w-[10px] h-[10px] bg-[#3C6E71] rounded-full inline-block mr-2.5"></span>
+                      Team Members - 50
+                    </li>
+                  </ul>
                 </div>
               </div>
             )}
