@@ -232,7 +232,7 @@ function LoginForm() {
               <p className="text-[#666666] mt-5">
                 New User ?
                 <span 
-                  className="cursor-pointer text-[#3c6e71] font-medium"
+                  className="cursor-pointer text-[#3c6e71] font-medium ml-2.5"
                   onClick={navSign}
                 >
                   Sign Up Now &#8594;
